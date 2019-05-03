@@ -1,0 +1,25 @@
+<h2 class="text-center mt-3 bg-primary text-white">PRENOTA LA TUA VISITA</h2>
+<div class="ml-5 mr-5 mt-5 ">
+  <form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm.value)" >
+
+        <div class="col">
+            Numero1
+            <input type="number" class="form-control" onfocus="this.value=''" placeholder="Numero1" name="n1" [formControl]="myForm.controls['n1']">
+            <div *ngIf="!myForm.controls['n1'].valid" class="alert alert-danger">"Numero 1" non è valido</div>
+            <div *ngIf="myForm.controls['n1'].hasError('required')" class="alert alert-danger">"Numero 1" è richiesto</div>
+
+            Numero2
+            <input type="number" class="form-control" onfocus="this.value=''" placeholder="Numero2"  name="n2" [formControl]="myForm.controls['n2']">
+            <div *ngIf="!myForm.controls['n2'].valid" class="alert alert-danger">"Numero 2" non è valido</div>
+            <div *ngIf="myForm.controls['n2'].hasError('required')" class="alert alert-danger">"Numero 2" è richiesto</div>
+        </div>
+
+
+      <div *ngIf="!myForm.valid" class="alert alert-danger">Il form non è valido</div>
+      <button class="btn btn-info text-white  " type="submit" (click)="somma()" [disabled]="!myForm.valid">+</button>
+      <button class="btn btn-info text-white " type="submit" (click)="sottrazione()" [disabled]="!myForm.valid">-</button>
+      <button class="btn btn-info text-white " type="submit" (click)="moltiplicazione()" [disabled]="!myForm.valid">*</button>
+      <button class="btn btn-info text-white " type="submit" (click)="divisione()" [disabled]="!myForm.valid">/</button>
+
+  </form>
+</div>
